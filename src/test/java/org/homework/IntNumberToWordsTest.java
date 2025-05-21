@@ -1,9 +1,36 @@
-package org.example;
+package org.homework;
 
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class IntNumberToWordsTest {
+
+    @Test
+    void testConstructorThrowsException() {
+        assertThrows(UnsupportedOperationException.class, IntNumberToWords::new);
+    }
+
+    @Test
+    void testPrivateConstructorThrowsException() {
+        assertThrows(UnsupportedOperationException.class, IntNumberToWords::new);
+    }
+
+    @Test
+    void testNumberTooHigh() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                IntNumberToWords.toString(1_000_000_000));
+        assertTrue(exception.getMessage().contains("Number out of range"));
+    }
+
+    @Test
+    void testNumberTooLow() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                IntNumberToWords.toString(-1_000_000_000));
+        assertTrue(exception.getMessage().contains("Number out of range"));
+    }
 
     @Test
     void testZero() {
@@ -46,5 +73,14 @@ class IntNumberToWordsTest {
     void testMinInt() {
         assertEquals("Минус девятьсот девяносто девять миллионов девятьсот девяносто девять тысяч девятьсот девяносто девять",
                 IntNumberToWords.toString(-999_999_999));
+    }
+
+    @Test
+    void testPrivateConstructor() throws Exception {
+        var constructor = IntNumberToWords.class.getDeclaredConstructor();
+        constructor.setAccessible(true);
+
+        InvocationTargetException thrown = assertThrows(InvocationTargetException.class, constructor::newInstance);
+        assertTrue(thrown.getCause() instanceof UnsupportedOperationException);
     }
 }

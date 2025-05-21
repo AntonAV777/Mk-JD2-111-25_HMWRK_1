@@ -1,8 +1,10 @@
-package org.example;
+package org.homework;
 
-import org.example.util.Formatter;
+import org.homework.util.Formatter;
 
 public class TimeConverter {
+
+    public TimeConverter() {}
 
     public static String toHoursMinuteSecondMillisecond(long millisecond, boolean shortFormat) {
         if (millisecond < 0) {

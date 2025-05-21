@@ -1,9 +1,13 @@
-package org.example;
+package org.homework;
 
-import org.example.util.NumberConstants;
-import org.example.util.NumberUtil;
+import org.homework.util.NumberConstants;
+import org.homework.util.NumberUtil;
 
 public class IntNumberToWords {
+
+    public IntNumberToWords() {
+        throw new UnsupportedOperationException("Utility class");
+    }
 
     public static String toString(int number) {
         return toString(number, Gender.MASCULINE);
@@ -49,26 +53,22 @@ public class IntNumberToWords {
         sb.append(NumberConstants.HUNDREDS[h]).append(" ");
 
         if (lastTwo < 20) {
-            if (lastTwo == 1) {
-                sb.append(gender == Gender.FEMININE ? "одна " : "один ");
-            } else if (lastTwo == 2) {
-                sb.append(gender == Gender.FEMININE ? "две " : "два ");
-            } else {
-                sb.append(NumberConstants.UNITS[lastTwo]).append(" ");
-            }
+            sb.append(getUnitWord(lastTwo, gender));
         } else {
             sb.append(NumberConstants.TENS[t]).append(" ");
-            if (u == 1) {
-                sb.append(gender == Gender.FEMININE ? "одна " : "один ");
-            } else if (u == 2) {
-                sb.append(gender == Gender.FEMININE ? "две " : "два ");
-            } else {
-                sb.append(NumberConstants.UNITS[u]).append(" ");
-            }
+            sb.append(getUnitWord(u, gender));
         }
 
         sb.append(NumberUtil.getForm(number, formIndex));
         return sb.toString().trim();
+    }
+
+    private static String getUnitWord(int value, Gender gender) {
+        return switch (value) {
+            case 1 -> gender == Gender.FEMININE ? "одна " : "один ";
+            case 2 -> gender == Gender.FEMININE ? "две " : "два ";
+            default -> NumberConstants.UNITS[value] + " ";
+        };
     }
 
     public enum Gender {

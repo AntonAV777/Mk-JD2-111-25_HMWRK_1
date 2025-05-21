@@ -1,10 +1,15 @@
-package org.example;
+package org.homework;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TimeConverterTest {
+
+    @Test
+    void testConstructorCoverage() {
+        new TimeConverter();
+    }
 
     @Test
     void testShortFormatBasic() {

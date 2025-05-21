@@ -1,6 +1,8 @@
-package org.example;
+package org.homework;
 
 public class WeekConverter {
+
+    public WeekConverter() {}
 
     public static String toWeek(int day) {
         if (day < 0) {

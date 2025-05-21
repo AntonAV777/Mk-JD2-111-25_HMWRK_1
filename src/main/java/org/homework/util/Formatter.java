@@ -1,4 +1,4 @@
-package org.example.util;
+package org.homework.util;
 
 public class Formatter {
 

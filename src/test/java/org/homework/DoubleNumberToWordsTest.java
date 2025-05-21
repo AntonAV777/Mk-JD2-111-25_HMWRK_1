@@ -1,9 +1,14 @@
-package org.example;
+package org.homework;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DoubleNumberToWordsTest {
+
+    @Test
+    void testConstructorCoverage() {
+        new DoubleNumberToWords();
+    }
 
     @Test
     void testZero() {

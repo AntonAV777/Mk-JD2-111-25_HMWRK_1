@@ -1,4 +1,4 @@
-package org.example.util;
+package org.homework.util;
 
 public class NumberConstants {
     public static final String[] UNITS = {

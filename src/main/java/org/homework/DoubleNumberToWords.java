@@ -1,11 +1,13 @@
-package org.example;
+package org.homework;
 
-import org.example.util.NumberUtil;
+import org.homework.util.NumberUtil;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class DoubleNumberToWords {
+
+    public DoubleNumberToWords() {}
 
     public static String toString(double number) {
         if (Double.isNaN(number)) {
